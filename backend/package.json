@@ -1,0 +1,23 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "\"\"",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js",
+        "start:backend": "nodemon index.js",
+        "start:frontend": "cd ../frontend && npm start",
+        "start:app": "concurrently \"(npm run start:frontend)\" \"(npm run start:backend)\""
+    },
+    "author": "\"nikolay verstak\"",
+    "license": "ISC",
+    "dependencies": {
+        "concurrently": "^8.0.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "mongoose": "^7.2.0",
+        "nodemon": "^2.0.22"
+    }
+}

@@ -1,0 +1,302 @@
+// Medium screens
+.shops-page {
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin: 12px;
+        margin-top: var(--navbar-height);
+
+        & .products-list-wrapper {
+            width: 100%;
+            padding: 0 8px;
+
+            & h3 {
+                display: none;
+            }
+
+            & #products-list {
+                max-height: max-content;
+                width: 100%;
+                overflow-y: auto;
+                gap: 1.2rem;
+                grid-template-columns: repeat(auto-fit, 300px);
+
+                & .col {
+                    padding: 0;
+                    width: max-content;
+                }
+
+                & #product-card.dominos-pizza .product-image-container {
+                    min-height: 192px;
+                }
+
+                & #product-card.kfc .product-image-container {
+                    min-height: 200px;
+                }
+            }
+        }
+
+        & #shop-list {
+            overflow: hidden;
+            width: clamp(300px, 58vw, 400px);
+            margin-top: 1rem;
+            padding: 0 1rem;
+
+            & .shop-items {
+                margin-bottom: 1.2rem;
+            }
+
+            & h3 {
+                align-items: center;
+                justify-content: space-around;
+                gap: 0.5rem;
+                font-size: 1rem;
+                & button {
+                    border: 1px solid rgba(0, 0, 0, 0.175);
+                    font-weight: 600;
+                    color: rgb(58, 66, 61);
+                    min-width: 136px;
+
+                    .icon.up svg {
+                        position: relative;
+                        top: -2px;
+                        transform: rotate(-180deg);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// SHOPS LIST
+#shop-list {
+    overflow: hidden;
+    width: 30%;
+    max-width: 400px;
+    min-width: 300px;
+    text-align: center;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgba(0, 0, 0, 0.175);
+    height: max-content;
+    padding: 2rem;
+    padding-top: 0;
+    border-radius: 0.4rem;
+    font-family: "Oswald", sans-serif;
+    box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
+
+    margin-top: 54px;
+
+    & h3 {
+        font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: rgb(58, 66, 61);
+    }
+
+    & .shop {
+        letter-spacing: 0.1rem;
+        cursor: pointer;
+        background-color: rgb(233, 248, 233);
+        box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
+
+        &:hover {
+            background-color: rgba(144, 197, 181, 0.2);
+        }
+
+        &.active {
+            border-color: rgba(0, 0, 0, 0.125);
+            background-color: rgb(144, 197, 181);
+        }
+    }
+
+    & .warning-message {
+        font-size: 0.8em;
+        color: #ff4b5d;
+        width: 96%;
+        margin: 0.5rem auto 0;
+    }
+}
+
+// PRODUCT CARD
+#product-card {
+    width: 18.75rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 4px;
+    font-family: "Oswald", sans-serif;
+    text-align: center;
+
+    & img {
+        height: 200px;
+        object-fit: contain;
+    }
+
+    // these shops has image background (now white like for others)
+    &:is(.dominos-pizza, .kfc) img {
+        height: auto;
+        width: 100%;
+    }
+
+    & .product-image-container {
+        position: relative;
+        min-height: 200px;
+    }
+
+    &.dominos-pizza .product-image-container {
+        min-height: 183px;
+    }
+
+    &.kfc .product-image-container {
+        min-height: 189px;
+    }
+
+    // overlay container shows if the product is added to cart
+    & .overlay-container {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        height: 0;
+        margin: 0;
+        transition: opacity 0.7s;
+        z-index: -1;
+    }
+
+    & .overlay-container:hover {
+        opacity: 0 !important;
+    }
+
+    &.added .overlay-container {
+        background-color: rgb(144, 197, 180, 0.4);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        opacity: 1;
+        height: 100%;
+        width: 100%;
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        -webkit-text-stroke: 0.2px rgba(0, 0, 0);
+        text-shadow: rgba(0, 0, 0) 2px 2px 4px;
+        z-index: 1;
+    }
+
+    &.dominos-pizza.added .overlay-container {
+        background-color: rgba(162, 173, 170, 0.4);
+    }
+
+    & .card-body {
+        padding-top: 0.5rem;
+    }
+
+    & .card-text {
+        font-family: "Russo One", sans-serif;
+        font-size: 0.8rem;
+
+        background-color: rgb(236, 236, 236);
+        width: calc(100% + 2 * 1rem);
+        right: 1rem;
+        position: relative;
+        padding: 0 0.5rem 0.5rem 0.5rem;
+        margin-bottom: 0;
+        transition: padding 0.5s;
+
+        &.hidden {
+            padding-top: 1rem;
+        }
+
+        & button.product-details {
+            border: none;
+            border-radius: 6px;
+            width: 116px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            margin: 0 auto;
+            margin-bottom: 0.5rem;
+
+            font-size: 1rem;
+            font-family: "Oswald", sans-serif;
+
+            .icon {
+                transition: transform 0.3s ease;
+            }
+
+            .icon.up svg {
+                position: relative;
+                top: -2px;
+                transform: rotate(-180deg);
+            }
+        }
+    }
+
+    & .price-add-to-cart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0.5rem;
+
+        & .price {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        & button {
+            background-color: rgb(144, 197, 180);
+            color: rgb(248, 248, 248);
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            box-shadow: rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;
+            width: 5.8rem;
+            height: 2.4rem;
+            padding: 0;
+            font-size: 1.1rem;
+
+            &:hover {
+                background-color: rgb(100, 150, 135);
+            }
+            &:active {
+                background-color: rgb(144, 197, 180);
+            }
+        }
+    }
+}
+
+// PRODUCTS LIST
+.products-list-wrapper {
+    width: 70%;
+    display: inline-block;
+    vertical-align: middle;
+
+    & h3 {
+        font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: rgb(58, 66, 61);
+    }
+}
+
+#products-list {
+    max-height: calc(100vh - 7rem);
+    overflow-y: scroll;
+    width: calc(100% - 1rem);
+
+    padding-bottom: 1rem;
+    margin: 0 auto;
+    align-items: start;
+    justify-content: center;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 310px);
+    grid-auto-rows: min-content;
+    gap: 2rem;
+
+    & .col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Russo+One&display=swap&family=Roboto&display=swap");
+
+body {
+    --navbar-height: 56px;
+
+    background: radial-gradient(circle at 5% 0%, rgba(216, 239, 85, 0.2) 15%, transparent 35%),
+        radial-gradient(circle at 0% 0%, rgba(144, 222, 251, 0.32) 9%, transparent 16%),
+        radial-gradient(circle at 100% 50%, rgba(216, 239, 85, 0.25) 5%, transparent 30%),
+        radial-gradient(circle at 100% 50%, rgba(144, 222, 251, 0.25) 8%, transparent 20%),
+        radial-gradient(circle at 5% 81%, rgba(216, 239, 85, 0.13) 11%, transparent 24%),
+        radial-gradient(circle at 0% 84%, rgba(144, 222, 251, 0.4) 2.5%, transparent 14%);
+    min-width: 358px;
+}
+
+body:has(.loader) .nav {
+    display: none;
+}
+
+// Loader Styles
+.loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: rgba(218, 218, 218, 0.75);
+    z-index: 10;
+    display: grid;
+    place-items: center;
+
+    .loader {
+        display: flex;
+        transition: all 0.4s;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .loader div {
+        background-color: rgb(144, 197, 181, 0.75);
+        box-shadow: inset 2px 2px 10px black;
+        border-radius: 100%;
+        height: 1.5rem;
+        width: 1.5rem;
+
+        @media screen and (max-width: 767px) {
+            height: 1rem;
+            width: 1rem;
+        }
+    }
+
+    .box-load1 {
+        animation: brighten 1.2s infinite;
+    }
+
+    .box-load2 {
+        animation: brighten 1.2s infinite;
+        animation-delay: 0.2s;
+    }
+
+    .box-load3 {
+        animation: brighten 1.2s infinite;
+        animation-delay: 0.4s;
+    }
+
+    @keyframes brighten {
+        100% {
+            background-color: rgb(165, 165, 165);
+            box-shadow: none;
+        }
+    }
+}
+
+//  Pages main spaces and heights
+.shops-page,
+.cart-page,
+.error-section {
+    margin: 1.5rem;
+    margin-bottom: 0;
+    margin-top: calc(var(--navbar-height));
+    min-height: calc(100vh - var(--navbar-height));
+
+    display: flex;
+    gap: 1.5rem;
+}
+
+// Server error section
+.error-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    & svg {
+        height: clamp(6rem, 17vw, 9rem);
+    }
+
+    & .error-header {
+        font-family: "Russo One", sans-serif;
+        letter-spacing: 1px;
+        margin-bottom: 0;
+    }
+    & .error-text {
+        margin-bottom: 1rem;
+
+        p {
+            margin: 0;
+            font-family: "Oswald", sans-serif;
+            font-size: clamp(1rem, 2.55vw, 1.3rem);
+        }
+    }
+
+    & a {
+        box-shadow: rgba(100, 100, 111, 0.5) 0px 6px 13px 0px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        font-family: "Russo One", sans-serif;
+        margin-bottom: 2rem;
+    }
+}
+
+// Scrollbar Styles
+::-webkit-scrollbar {
+    height: 12px;
+    width: 10px;
+    background-color: transparent;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 197, 181, 0.75);
+    border-radius: 100vh;
+    width: 5px;
+    border: 3px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+}
+::-webkit-scrollbar-button {
+    display: none;
+}
+::-webkit-scrollbar-corner {
+    display: none;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(144, 197, 181);
+    border-radius: 100vh;
+}

@@ -1,0 +1,92 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: "Russo One", sans-serif;
+    width: 100vw;
+    background-color: rgb(173, 233, 255);
+    box-shadow: inset 4px 4px 8px 0 rgba(0, 0, 0, 0.3);
+    height: var(--navbar-height);
+    z-index: 3;
+    min-width: 358px;
+
+    & .clean-cart {
+        background-color: rgb(220, 243, 220);
+        font-size: 1.2rem;
+        height: 40px;
+        margin-left: auto;
+
+        &:hover {
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        & svg {
+            font-size: 1.4rem;
+            margin-bottom: 3px;
+        }
+    }
+
+    & .nav-link {
+        color: rgb(50, 52, 54) !important;
+        display: grid;
+        place-items: center;
+        border-color: transparent !important;
+        position: relative;
+
+        &:not(.active):hover {
+            text-decoration: underline rgb(50, 52, 54);
+        }
+        &.active {
+            background-image: linear-gradient(
+                to right,
+                rgb(220, 243, 220),
+                rgb(248, 252, 221)
+            ) !important;
+        }
+
+        & .badge {
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            right: -2px;
+            display: grid;
+            place-items: center;
+            width: 24px;
+            height: 24px;
+            padding: 0;
+            border: 1px solid rgba(50, 52, 54, 0.493);
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        & .clean-cart {
+            position: relative;
+            right: 8px;
+        }
+    }
+
+    @media screen and (max-width: 576px) {
+        & .nav-link {
+            font-size: 1rem;
+
+            padding: 0.4rem 0.8rem !important;
+
+            & .badge {
+                right: -6px;
+            }
+        }
+        & .clean-cart {
+            background-color: rgb(220, 243, 220);
+            font-size: 1rem;
+            height: 34px;
+            margin-left: auto;
+            position: relative;
+            top: 4px;
+            right: 8px;
+            & svg {
+                font-size: 1.2rem;
+                margin-bottom: 3px;
+            }
+        }
+    }
+}

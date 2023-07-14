@@ -1,0 +1,12 @@
+{
+    "name": "foodify-delivery",
+    "version": "1.0.0",
+    "description": "web app  where users can order food delivery",
+    "main": "index.js",
+    "scripts": {
+        "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
+        "start": "cd backend && npm run start:app"
+    },
+    "author": "\"nikolay vertsak\"",
+    "license": "ISC"
+}
