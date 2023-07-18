@@ -97,6 +97,21 @@ const orderSlice = createSlice({
             }
             updateLocalStorage(state.cartItems, state.totalAmount, state.totalQty);
         },
+        removeItem: (state, action) => {
+            const { productId, price, qty } = action.payload;
+            if (state.cartItems.length === 1) {
+                state.cartItems = [];
+                state.totalAmount = "0 ₴";
+                state.totalQty = 0;
+            } else {
+                state.cartItems = state.cartItems.filter((item) => item.productId !== productId);
+                state.totalAmount =
+                    (parseFloat(state.totalAmount) - qty * parseFloat(price)).toFixed(2) + " ₴";
+                state.totalQty -= qty;
+            }
+
+            updateLocalStorage(state.cartItems, state.totalAmount, state.totalQty);
+        },
         updateCartFromLocalStorage: (state, action) => {
             const { cartItems, totalAmount, totalQty } = action.payload;
 
@@ -132,7 +147,13 @@ const orderSlice = createSlice({
     },
 });
 
-export const { addToCart, increaseQty, reduceQty, updateCartFromLocalStorage, cleanCart } =
-    orderSlice.actions;
+export const {
+    addToCart,
+    increaseQty,
+    reduceQty,
+    removeItem,
+    updateCartFromLocalStorage,
+    cleanCart,
+} = orderSlice.actions;
 
 export default orderSlice.reducer;

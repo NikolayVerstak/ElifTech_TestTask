@@ -116,6 +116,7 @@
 
                         & .card-item-name {
                             font-size: 1rem;
+                            padding: 0 1rem;
                         }
 
                         & .card-text {
@@ -124,8 +125,6 @@
                             }
 
                             & .cart-item-qty {
-                                gap: 0.7rem;
-
                                 & button {
                                     width: 1.7rem;
                                     height: 2.1rem;
@@ -134,7 +133,17 @@
 
                                 & span {
                                     font-size: 1.1rem;
+                                    width: 2rem;
                                 }
+                            }
+                        }
+
+                        & .cart-item-remove {
+                            right: 0.35rem;
+                            top: 0.35rem;
+
+                            & svg {
+                                height: 0.9rem;
                             }
                         }
                     }
@@ -350,7 +359,6 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 1rem;
 
                 & button {
                     border: 1px solid rgba(0, 0, 0, 0.175);
@@ -362,6 +370,25 @@
 
                 & span {
                     font-size: 1.2rem;
+                    width: 3rem;
+                }
+            }
+        }
+
+        & .cart-item-remove {
+            position: absolute;
+            display: flex;
+            right: 0.5rem;
+            top: 0.5rem;
+
+            & svg {
+                height: 1rem;
+                fill: rgb(141, 144, 150);
+                cursor: pointer;
+
+                &:hover {
+                    transform: scale(1.1);
+                    fill: rgb(115, 117, 121);
                 }
             }
         }
